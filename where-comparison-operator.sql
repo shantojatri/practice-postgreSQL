@@ -34,7 +34,7 @@ SELECT name, population FROM cities WHERE population < 1000000;
 -- ? Find all cities with a population between 500,000 and 2 million.
 SELECT name, population FROM cities WHERE population BETWEEN 500000 AND 2000000;
 
--- ? Find all cities that are not in the country 'USA'.
+-- ? Find all cities that are not equal to the country 'USA'.
 SELECT name, country FROM cities WHERE country <> 'USA';
 
 -- ? Find all cities with names starting with the letter 'A'.
