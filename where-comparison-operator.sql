@@ -67,3 +67,6 @@ SELECT name, area FROM cities WHERE area IS NOT NULL;
 -- ? Find all cities that are in countries with a population greater than 50 million.
 SELECT name, country FROM cities WHERE EXISTS (SELECT name, country FROM countries WHERE countries.name = cities.country AND countries.population > 50000000); 
 
+--? Example of using a comparison operator in a more complex expression
+-- ? Find all cities with a population density greater than 6000 people per square kilometer.
+SELECT name, population / area as population_density FROM cities WHERE population / area > 6000;
