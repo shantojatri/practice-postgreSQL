@@ -1,4 +1,4 @@
---? Inner join example 
+--? Join examples 
 --> users and orders tables
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -27,7 +27,27 @@ INSERT INTO orders (user_id, product, amount) VALUES
 (1, 'Tablet', 400),
 (3, 'Monitor', 300);
 
+--? Inner join example
 -- ? Retrieve all users along with their orders
+-- ? Only users with orders will be included
 SELECT users.name, orders.product, orders.amount
 FROM users
 INNER JOIN orders ON users.id = orders.user_id;
+
+--? Left join example
+--? Retrieve all users and their orders, including users without orders
+SELECT users.name, orders.product, orders.amount
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id;
+
+--? Right join example
+--? Retrieve all orders and their associated users, including orders without users
+SELECT users.name, orders.product, orders.amount
+FROM users
+RIGHT JOIN orders ON users.id = orders.user_id;
+
+--? Full outer join example
+--? Retrieve all users and all orders, matching where possible
+SELECT users.name, orders.product, orders.amount
+FROM users
+FULL OUTER JOIN orders ON users.id = orders.user_id;
