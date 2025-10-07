@@ -60,3 +60,16 @@ RIGHT JOIN orders ON users.id = orders.user_id;
 SELECT users.name, orders.product, orders.amount
 FROM users
 FULL OUTER JOIN orders ON users.id = orders.user_id;
+
+
+--? We can use alias and make complex query simpler
+--? users AS u and, orders AS o
+SELECT u.name, o.product, o.amount
+FROM users AS u
+FULL OUTER JOIN orders AS o ON u.id = o.user_id;
+
+--? We can also hide the AS keyword, but this still works
+--? this is the sort hand way
+SELECT u.name, o.product, o.amount
+FROM users u
+FULL OUTER JOIN orders o ON u.id = o.user_id;
