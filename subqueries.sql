@@ -13,7 +13,7 @@ VALUES
     ('Samsung Galaxy S21', 799, 171),
     ('Google Pixel 5', 699, 151),
     ('OnePlus 9', 729, 192),
-    ('Sony Xperia 5', 899, 163),    
+    ('Sony X-peria 5', 899, 163),    
     ('LG Velvet', 599, 180),
     ('Motorola Edge', 699, 188),
     ('Nokia 8.3', 649, 220),
@@ -50,3 +50,28 @@ VALUES
 SELECT name, price FROM products
 WHERE price > (SELECT AVG(price) FROM products)
 ;
+
+--? Example of correlated subquery 
+--? It will return products with price greater than price of product with id = 3
+SELECT name, price, (SELECT price FROM products WHERE id = 3) AS id_3_price
+FROM products
+where price > 599
+;
+
+--? Example of subquery in FROM clause
+--? It will return products with price to weight ratio greater than 3
+--? Here, the subquery calculates price to weight ratio for each product
+--? The outer query filters products based on this ratio
+SELECT name, price_weight_ratio 
+FROM (SELECT name, price / weight AS price_weight_ratio FROM products) AS p
+where price_weight_ratio > 3
+;
+
+
+--? Example of subquery with GROUP BY
+--? It will return average number of orders per user
+--? Here, the subquery groups orders by user_id and counts number of orders per user
+--? The outer query calculates average number of orders from this grouped data
+--? Assuming there is a user_id column in orders table
+--? If user_id column does not exist, this query will throw an error
+SELECT AVG(order_count) FROM (SELECT user_id, COUNT(*) AS order_count FROM orders GROUP BY user_id) AS p;
