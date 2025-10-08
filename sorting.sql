@@ -39,4 +39,5 @@ SELECT * FROM products ORDER BY price LIMIT 5;
 
 --? Example of limit & Offset
 --? It will take first 5 records by skipping first 2 items
+--? We need to declare LIMIT before OFFSET by convention
 SELECT * FROM products ORDER BY price LIMIT 5 OFFSET 2;
