@@ -78,11 +78,27 @@ INTERSECT
 (SELECT 'Total Orders' AS name, SUM(quantity) AS price FROM orders)
 ;
 
+--? Example of INTERSECT ALL
+--? It will return all common records from both tables including duplicates
+--? Complex queries need to wrap each SELECT statement in parentheses
+(SELECT name, price FROM products)
+INTERSECT ALL
+(SELECT 'Total Orders' AS name, SUM(quantity) AS price FROM orders)
+;
+
 --? Example of EXCEPT
 --? It will return records from first table that are not in second table
 --? Complex queries need to wrap each SELECT statement in parentheses
 (SELECT name, price FROM products)   
 EXCEPT
+(SELECT 'Total Orders' AS name, SUM(quantity) AS price FROM orders)
+;
+
+--? Example of EXCEPT ALL
+--? It will return all records from first table that are not in second table including duplicates
+--? Complex queries need to wrap each SELECT statement in parentheses
+(SELECT name, price FROM products)   
+EXCEPT ALL
 (SELECT 'Total Orders' AS name, SUM(quantity) AS price FROM orders)
 ;
 
