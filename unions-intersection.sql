@@ -1,4 +1,3 @@
---? Example of UNION and UNION ALL
 --? Create products table
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
